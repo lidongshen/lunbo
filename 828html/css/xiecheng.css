@@ -848,12 +848,13 @@
     float: left;
     position: relative;
     margin: 0 10px 10px 0;
-    transition:all 1s ease;
+    transition:box-shadow 1s ease,transform 1s ease;
     
 
 }
 .seven-bottom-right-left>li:hover {
    transform: scale(1.05,1.05);
+  
    box-shadow: 0px 0px 5px #a3a3a3;
 }
 .seven-bottom-right-left li:nth-child(1) {
@@ -968,10 +969,13 @@
     float: left;
     background: url(https://pages.c-ctrip.com/hotel/201805/thailand/220330.jpg) no-repeat center /auto 100%;
 }
-
+.jipiao-cont{
+    width: 1160px;
+    height: 340px;
+}
 .eight-bottom-left {
     width: 920px;
-    height: 340px;
+    height: 100%;
     float: left;
 }
 
@@ -1166,9 +1170,9 @@
 }
 .ten-bottom-right-bottom {
     width: 100%;
-    height: 200px;
+    height:160px;
     padding: 0 20px;
-    margin: 20px 0;
+    margin: 25px 0 35px;
     box-sizing: border-box;
 }
 
@@ -1179,6 +1183,7 @@
     margin: 0 0 10px 10px;
     overflow: hidden;
 }
+
 
 .ten-bottom-right-bottom li:nth-child(1) {
     background: url(https://dimg06.c-ctrip.com/images/100k0w000000kgkgfC8BA_R_220_160.jpg)no-repeat center /100%  auto ;
@@ -1209,12 +1214,12 @@
 }
 .mudi {
     width: 100%;
-    height: 40px;
+    height: 80px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
     line-height: 40px;
     text-align: center;
-    margin-top: 135px;
+    margin-top: 120px;
 }
 
 .car {
@@ -1433,13 +1438,17 @@
     border: 1px solid #e0e0e0;
     background: #fff;
 }
-
+.twenty-bottoms>li:hover {
+    background: #e2eeff;
+}
 .twenty-bottom-top {
     width: 100%;
     height: 102px;
     border-bottom: 1px solid #e0e0e0;
 }
-
+.twenty-bottom-top:hover {
+    background: #e2eeff;
+}
 #cha {
     border-bottom: none;
 }
@@ -1485,7 +1494,7 @@
 
 .twenty-bottom-top-right {
     width: 254px;
-    height: 100%;
+    height: 80px;
     margin: 15px 0 0 10px;
     float: left;
 }
@@ -1508,28 +1517,30 @@
 
 .list {
     padding: 0 15px;
-    height: 24px;
-    line-height: 24px;
-    margin: -5px 0 0;
+    height: 40px;
+    line-height: 40px;
+   
 }
 
 .line {
     width: 1px;
     height: 24px;
-    margin: -5px 0 0;
+    margin-top:8px;
     border-right: 1px dashed #a3a3a3;
 }
 
 .twenty-bottom-bottom>li {
     float: left;
 }
-
+.twenty-bottom-bottom>li:hover {
+    background: #e2eeff;
+}
 .local {
     width: 24px;
     height: 24px;
-    line-height: 24px;
+    
     float: left;
-    margin-right: 5px;
+    margin:8px  8px 0 0;
     background: url(https://pic.c-ctrip.com/index/v3.0/supply_icon.png) no-repeat center / 100% auto;
 }
 
@@ -1537,6 +1548,7 @@
     width: 24px;
     height: 24px;
     line-height: 24px;
+    margin:8px  0 0;
     float: left;
     background: url(https://pages.ctrip.com/tour/pdf1610/1.png) no-repeat center / 100% auto;
 }
@@ -1546,7 +1558,7 @@
     height: 24px;
     border-radius: 50%;
     line-height: 24px;
-    margin-right: 5px;
+    margin:8px  8px 0 0;
     float: left;
 }
 

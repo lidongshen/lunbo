@@ -8,7 +8,7 @@ function tabs(box,content) {
                 wbox[j].style.color = "black"
             }
             lcont[i].style.display = "block"
-            this.style.color = "greenyellow"
+            this.style.color = "green"
         }
     }
 }
