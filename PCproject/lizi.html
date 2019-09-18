@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .zong{
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        .zong div:nth-child(1){
+            width: 100%;
+            height: 200px;
+            background: greenyellow;
+        }
+        .zong div:nth-child(2){
+            width: 100%;
+            height: 200px;
+            background: green;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var div1=document.querySelector(".zong div:nth-child(1)")
+            var div=document.querySelector(".zong")
+            var div2=document.querySelector(".zong div:nth-child(2)")
+            div.onmouseover=function(){
+                div1.style.display="none"
+                div2.style.display="block"
+            }
+            div.onmouseout=function(){
+                div1.style.display="block"
+                div2.style.display="none"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="zong">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
