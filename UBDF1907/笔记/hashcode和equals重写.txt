@@ -1,0 +1,37 @@
+/**
+	 * hashCode方法：返回hash值，代表的就是对象在内存中的位置
+	 *     默认情况下，所有在堆中的对象的地址都是唯一的；
+	 * 重写hashCode方法的思路：
+	 * 	将对象的所有属性的hash值进行累加，求出一个累加和；
+	 * 
+	 * 二次hash ： 就对object类实现的hashCode方法进行重写，求出一个新的hash值，
+	 * 			而该hash值，并不是对象在内存中存储的地址，仅仅是使用新的hash值，
+	 * 			来决定存储在哈希表中的哪一个位置；
+	 */
+/*	@Override
+	public int hashCode() {
+		return name.hashCode() + age;
+	}
+	
+	*//**
+	 * 重写equals方法的思路;
+	 * 	比较对象之间的所有属性，是否相同，如果有一个属性值不同，那么返回false;
+	 * 	如果全部相同，返回true；
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		/*//强制转换：
+		if (obj instanceof Stu) {
+			Stu s = (Stu)obj;
+			//比较;
+			if (this.name.equals(s.name)) {
+				return true;
+			}
+			if (this.age == s.age) {
+				return true;
+			}
+		}
+		return false;*/
+		
+		
+	}

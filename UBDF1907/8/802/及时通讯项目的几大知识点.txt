@@ -1,0 +1,369 @@
+GUI
+	gui编程的思路（网页也一样 c#也一样）
+	
+	API application programmer interface 应用程序编程接口
+		
+		就是API文档中的内容，其实就是javadoc导出的文档，也就是教你如何使用类，如何使用类中的方法
+		的java的 jdk 帮助文档。
+		
+	java.swing.*
+	java.awt.*
+	
+	
+	1 选控件 
+		界面需要几个按钮，几个输入框 几个下拉菜单 几个label。。。
+		JFrame 
+				setTitle
+				setSize
+				setLocation
+				setDefaultCloseOperation(JFrame.exit_on_close);
+				setVisiable(true);
+				
+				
+				add
+				
+				
+				
+		JPanel JLabel JTextField JPasswordField JButton
+		
+		
+	2 布局
+		控件放到哪里 ，也就是位置
+			
+			相对布局
+				BorderLayout		上下左右中
+				FlowLayout			从中间到俩边
+				GridLayout			表格 n行n列
+				
+				
+			绝对布局
+				容器设置setLayout(null)
+				容器中的控件设置的是setLocation(x,y)
+		
+		
+	3 加监听
+	
+		一个按钮点击是不得有反应？这个就要给这个按钮加一个监听事件
+		
+		比如加一个点击事件，把代码写事件处理部分
+		
+		事件包括鼠标事件 、 键盘事件。。。
+		
+		addActionListener(new ActionListener(){
+		
+			public void actionPerformed(ActionEvent e){
+				
+				
+			
+			}
+			
+		
+		});
+		
+
+IO和网络编程
+	
+	
+	IO
+		
+		File类既代表文件也代表文件夹。但是File类不能对文件本身进行读写，读写还要靠IO;
+	
+		IO就是java当中读取或写的工具，想要读写数据就要用IO类
+		
+		IO流的分类
+			
+			字节流和字符流
+			
+				字节流InputStream 和 OutputStream （抽象类）系列子孙
+						比如读写文件FileInputStream。。。
+
+				字符流Reader 和 Writer （抽象类）系列子孙
+						比如读写文件FileReader 和 FileWriter。。。
+						
+						
+				字节流什么类型的数据都可以读，字符流读取纯文本字符
+				
+			
+			输入流和输出流
+			
+				In Reader 是输入
+				Out Writer Print是输出
+				
+			带不带缓冲功能
+			
+				Bufferd或print 就是有缓冲功能，配合flush
+				
+		
+		
+		读的数据源或目的地常见的有
+			
+			文件 File
+			网络 socket
+			内存
+			。。。
+			
+	网络
+		IP
+		Port
+		
+		TCP和UDP
+		
+			TCP是传输控制协议：电话 事先需要建立连接 ip port 安全有保障
+			
+			UDP用户报协议	 ：写信 有可能丢失数据 也不保证顺序
+			
+		
+		
+
+关于异常
+
+	掌握java的异常体系
+			
+									Throwable
+			
+			
+			error										exception
+			
+			
+		AnnotationFormatError, 				RuntimeException		 ClassNotFoundException IOException,SQLException,
+		AssertionError, 
+		AWTError, 						NUllPointerException 
+		CoderMalfunctionError, 			, ArithmeticException
+		FactoryConfigurationError,      IndexOutOfBoundsException,
+		FactoryConfigurationError, 
+		IOError,
+			
+		
+	
+		Throwable是java异常体系的顶级父类，它的系列子孙才可以被java虚拟机抛出，或者throw 关键字抛出
+		或者是作为catch块的参数。
+		
+		error是错误，个数比较少，但是战斗力比较强，一个程序就奔溃
+		
+		exception是异常  个数非常多，但是没error的厉害 可以修复
+			
+			exception下分为俩大类，
+				一类RuntimeException和他的分支
+		
+				另一类是 RuntimeException 和兄弟，是和它并列的
+	
+
+		
+	掌握编译时异常和运行时异常的区别
+
+
+
+	掌握常用的编译时异常和运行时异常
+		
+		
+	
+	掌握几个关键字
+	
+		try
+		
+		catch
+		
+		finally
+		
+		
+		throw
+		
+		
+集合框架或容器
+
+	String[] names = new String[]{"zs" , "ls" , "ww"};
+	
+	数组是有缺陷的，最大的问题是长度是限定的。无论是静态初始化还是动态初始化都是一定的长度。
+	
+	
+	如何解决这个问题？集合框架
+	
+		集合框架的重点的API
+		
+			List（有序，可重复）
+				ArrayList
+	
+			Set （无序，不重复）
+				HashSet
+	
+			Map (不是集合框架 强关联)
+				HashMap
+	
+	
+数据库
+	
+	重要性：所有有价值的数据基本都存在数据库。
+	
+	几个名词
+		DBMS		数据库管理软件 database manager system
+		
+		DB			数据库	database
+		
+		Table		表
+		
+		row			行
+		
+		column		列
+		
+		
+		
+	数据库的分类
+		关系型数据库（table）
+			大型的 oracle sybase db2
+			中型的 mysql sqlserver
+			小型的 access
+			
+		nosql数据库
+			
+			文档型的 MongoDB
+			内存键值对 memachche redis
+			。。。。
+			
+	
+	SQL
+		structure query language 结构化查询语言
+		
+		sql是关系型数据库的标准的操作接口 语句
+		
+		DDL
+			数据库的定义语句 database define language
+			
+			
+		DML
+		
+		DQL
+		
+		CRUD
+		
+		create	增加
+			insert into t_user(name,age) values('zs' , 30);
+			
+		read
+			select *from t_user;
+			
+		update
+			update t_user set age = 40 where name='zs'
+			
+		delete
+			
+			delete from t_user where name='zs'
+			
+	数据库管理软件的安装
+		
+		建议用mysql 5.6.4，不用最新的版本比如8
+		
+		windows下 
+			
+			exe msi 双击下一步 
+				基本一路下一步，有一个地方注意设置root超级用户的密码
+				建议设置成root，会提示root密码太weak，继续。
+					
+				安装成功之后可能弹出来一个操作界面，关闭就可以。
+				我们不用这个界面操作mysql。
+				
+			解压缩
+		
+		linux 
+			tar
+	
+		
+安装好mysql之后，通过命令行操作mysql，常用的命令行的命令
+
+
+	mysql -uroot -p敲回车之后输入密码敲回车
+
+	show databases;	显示mysql目前一共多少个数据库（一个项目有一个）
+	
+	use world;		进入到某个数据库
+	
+	show tables;	查看该数据库有多少张表table
+		
+	select *from city;	查看某个表的所有的数据
+	
+	select *from city limit 0 , 5;	查看某个表的前5条数据
+	
+	
+	create database db_chat;//注意创建数据库 名字公司自己的规则
+	
+	drop database db_chat;//删除数据库
+	
+	//t_user是根据公司的规则
+	//primary key 的意思是非空唯一业务无关
+	//auto_increment 的意思是 insert不需要维护这个字段 自动+1 
+	create table t_user(
+		id int primary key auto_increment,
+		name varchar(20) not null,
+		age int not null
+	)
+	
+	drop table t_user;//删除数据库表
+	
+	insert into t_user(name,age) values('zs' , 20);
+		
+	insert into t_user(name,age) values('ls' , 25);
+		
+	delete from t_user; 注意如果不加条件 全部记录都删除 很危险
+	delete from t_user where id=1000;
+	
+	update t_user set age = 30  where name = 'zs';
+		
+	
+	select * from t_user; 查询所有行所有列
+	
+	select name , age from t_user;
+	
+	select name , age from t_user where id > 1 or name='ls';
+	 
+	select name , age from t_user order by name desc;
+	
+	//模糊查询 _代表一个字符 %代表0或n个字符
+	select name , age from t_user where name like '_s%';
+	
+
+JDBC
+	
+	java databse connect java连接数据库的技术
+	
+	jdbc就是一堆接口和类，是sun公司规定的数据库和java连接的接口，实现是由
+	各个数据库厂商实现的。比如mysql oralce，和java通讯，就必须提供jdbc的
+	实现。
+	
+	
+	jdbc的代码是模板代码
+	
+	create table t_user(
+		id int primary key auto_increment,
+		name varchar(20) not null,
+		password varchar(20) not null,
+		signature varchar(60),
+		header varchar(20)
+	)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		

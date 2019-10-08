@@ -1,0 +1,95 @@
+
+SQL :structural query language
+
+1)DML:数据操作语言：date manipulation language
+		包含：insert： 插入 添加数据库到数据库中
+			update:  修改数据库中的数据
+			  delete:  删除
+			  （DQL）select:  选择
+2）DDL 数据定义语言：
+		包含：create table:创建
+			  alter table:更改、添加、删除、修改列长度
+			  drop table: 删除表
+			  create index:在表中建立索引
+3）DCL 数据控制语言：
+		包含：commit：提交事务处理
+			  rollback：回滚
+二：DML学习：
+	2.1 select语句：
+		基础的select语法：
+		
+		AS 列的别名：一般使用双引号标识。
+		字符串要求单引号
+		
+		desc 表名   查看结构
+		
+		在sql中使用关键字where实现过滤
+		
+		or
+		and
+		between and 区间范围  【】闭区间
+		IN		【】闭区间
+		
+		NOT  取反
+		
+		like 匹配条件。匹配字符：% 0个或多个字符
+								_:1个字符
+								
+		IS NULL / IS NOT NULL
+		空值参与运算也为空
+		
+		排序：order by  asc 升序（默认）   desc 降序 
+		二次排序：先执行第一个排序再在第一个条件下执行第二条件。 order by *** desc, *** asc
+		
+		DISTINCT:去重  在字段前使用  select DISTINCT JOB_ID
+		
+		Concat  字符串全名
+		
+		LENGTH 返回字符串的长度
+		
+		多表查询： 
+				出现笛卡尔积：1）缺省了连接条件 2）连接条件无效
+				注意：在多表查询时，如果独立存在的字段，可以省略表别名，如果有重复字段，必须用表别名来标识。
+				sql9.2标准：
+					select e.em_id , e.de_id, d.dep_naem from employ e, dep d where e.dep_id = e.dep_id;
+				sql99标准：
+					inner join  on  where
+				内连接：只查询多个表中能够匹配的行
+					1）等值连接：
+					2)非等值连接：SELECT * FROM employees e INNER JOIN job_grades j on e.salary BETWEEN j.LOWEST_SAL AND j.HIGHEST_SAL ;
+					3）自连接：
+					
+				外连接：多张表之间进行关联查询，除了返回连接条件的记录，还会返回不满足连接条件的记录。
+					join 左边的是左表  右边的是右表
+					1）左外连接：left join  返回左表全部数据
+					2）右外连接：right join 返回右表全部数据
+					3）满外连接：FULL join  MySQL 使用 union:获取查询结果的并集（左外连接查询 union 右外连接连接）
+				
+		SQL语法规范：
+			1.sql语句中，大小写不敏感
+			2.sql语句可以写在一行或者多行，以分号作为一条语句的结束
+			3.在书写sql语句时，一般也要遵循缩进格式。提高可读性
+			4.sql关键字
+			
+			
+		·：反单引号，当你的字段名与sql中保留字和关键字冲突时，用反单引号来区别。
+		
+数据库类型：数值型、字符型、日期型
+		
+		
+		dual 虚拟的空表
+SQL函数：
+	单行函数：一进一出，传递一个字段
+		1)大小写控制：大写：upper(字段1) 小写：Lower(参数1)
+		2)字符控制函数： 切割：substr(参数,起始位置,长度)（sql语句中所有的索引从1开始）
+						 返回索引：instr(参数,指定的字符)
+						 拼接：concat(参数1,参数2)
+						 指定参数中的一个字符被替换：replace('abc','c','C')
+		
+	多行函数：多进一处，
+		1)平均值：avg(字段（多个字段值）)
+		2）最大值：max(字段)
+		3）最小值：min(字段)
+		4）求和：sum(字段)
+		5）统计：count(字段或*或1)1：将一条数据作为一个标识 1，统计1的个数。
+		6）

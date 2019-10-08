@@ -1,0 +1,346 @@
+赵士琛（chen）
+
+即时通讯项目驱动（局域网qq）
+
+需求分析
+	注册
+	登录
+	搜索好友
+	加好友
+	私聊
+	群聊
+	传文件
+	。。。
+
+涉及到的知识点
+
+	所有的基础知识（任何编程语言基本一样）
+		数据类型和变量
+		运算符
+		表达式
+		流程控制
+			顺序
+			分支
+				if else if
+				switch case
+			循环
+				while
+				do while
+				for
+				foreach
+		数组
+		函数
+		
+	如果是面向对象的语言
+		类
+		对象
+		this super
+		
+		
+		封装
+			访问控制修饰符 private default protected public
+		继承
+			extends
+		
+		多态
+			定义接口不定义实现 定义抽象不定义具体
+			
+		抽象 4大特征多一个抽象
+			abstract | final
+				
+		
+		接口 是彻底的抽象类
+	
+
+	专题API
+		集合
+		文件IO
+		GUI
+		网络编程
+		多线程
+		反射
+		正则
+		。。。。
+		
+
+数据库
+	是专门存储数据的软件，商业数据都是存在数据库的
+	如果是关系型数据库，类似于excel的展示 二维展示 行和列
+	
+GUI
+	graphy user interface 图形用户界面 对比的 命令行黑窗口的
+	
+	
+
+正式开发项目
+
+	先按照项目的流程做一个界面原型，先写界面，然后再说功能 这样可以给客户看到项目的
+	效果，包括一些交互，比如按钮点击，还是指纹输入。。。
+	
+	
+	做界面还有一点原型，简单点，直观效果
+	
+	
+	
+	1 做界面
+		
+		项目其实分为2端，服务器端和客户端 大部分界面应该是在客户端
+		
+		先建立工程 ChatClient 和 ChatServer
+		
+		需要注意的是package 工程下边package如何划分
+		
+		
+		com.uek.view		界面层
+		com.uek.service		业务逻辑层
+		com.uek.dao			数据访问层
+		com.uek.domain		数据层		
+		
+		com.uek.exception	自定义异常
+		com.uek.utils		工具类 其中可以有多个工具
+		com.uek.test		单元测试类
+		
+		
+		首先明确界面编程属于GUI 图形用户界面编程
+		
+		
+				
+			
+		1.1 登录界面
+				
+			
+				
+		1.2 注册页面
+		
+		
+		
+		1.3 主界面
+				
+
+	
+	通过网络编程和多线程IO实际已经建立好了框架了,接下来开发一个一个
+	的功能
+	
+	
+	注册功能
+		
+		协议
+			 客户端发送 : 1,zs,111,i am zs,1.jpg
+			
+			 服务器回复 :
+							1,ok
+							1,nook
+							
+		1 开发注册页面
+			gui的API
+			
+		2 在点击注册按钮的时候和服务器发送1,zs,111,i am zs,1.jpg
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("1".equals(strs[0]))
+			{
+				//3.1 首先从strs中解析出来数据
+				Sring name = strs[1];
+				....
+				
+				//3.2 连接数据库对应的操作
+				
+				
+				//3.3 根据数据操作的结果去准备返回给客户端的信息
+				//比如1,ok
+				
+				//3.4 发送给对应的客户端
+				
+			
+			}
+		
+		4 客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("1".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+				Sring flag = strs[1];
+				....
+			
+				//4.2 更新自己的客户端 ，
+					比如
+						1 关闭一个界面，再打开一个界面
+						2 比如弹出提示框
+						3 在当前界面更新某个区域，比如列表
+						
+			}
+			
+		
+	登录功能
+		
+		协议
+			 客户端发送 : 2,zs,111
+			
+			 服务器回复 :
+							2,ok,zs,111,iamzs,1.jpg;ls,111,iamls,1.jpg;ww,111,iamww,1.jpg
+							2,nook,name is not exist | password is not incorrect;
+							
+	
+	搜索好友
+		
+		协议
+			 客户端发送 : 3,serchkey
+			
+			 服务器回复 :
+							至少找到一个
+							3,ok,1,zs,iamzs,1.jpg;2,ls,iamls,1.jpg;ww,111,iamww,1.jpg
+							
+							一个都没有找到
+							3,nook
+							
+							
+		1 开发搜索页面
+			gui的API
+			1.1 extends JFrame
+			1.2 定义实例变量 
+				成员 组件 
+				JLabel
+				JTextField
+				。。。
+				JPanel
+				
+				
+				
+			1.3 init
+					
+					1.3.1 new所有的实例成员组件
+					1.3.2 给this设置属性
+							size
+							title
+							。。。
+							visiable
+							
+							
+							
+							
+		2 在点击搜索按钮的时候和服务器发送 3,serchkey
+		
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("3".equals(strs[0]))
+			{
+				//3.1 首先从strs中解析出来数据
+				Sring serchkey = strs[1];
+				....
+				
+				//3.2 连接数据库对应的操作
+					
+					select *from t_user where name like '%serchkey%';
+					
+				
+				//3.3 根据数据操作的结果去准备返回给客户端的信息
+				//比如3,ok,zs,111,iamzs,1.jpg;ls,111,iamls,1.jpg
+				
+				//3.4 发送给对应的客户端
+					
+					PrintStream
+			
+			}
+		
+		4 客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("3".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+				Sring flag = strs[1];
+				....
+					if("ok".equals(flag))
+					{
+						
+						String usersStr = line.subString(5);
+						
+						String[] users = usersStr.split(";");
+						
+						
+						
+					}
+			
+				//4.2 更新自己的客户端 ，
+					比如
+						1 找到FrameUtils中的搜索界面
+						2 更新搜索界面的table
+						
+			}
+			
+	
+	加好友
+		
+		协议
+			 客户端发送 : 4,zs,ls
+			
+			 服务器回复 :
+							4,ok
+							4,nook
+							
+							
+							
+	
+	私聊
+		
+		协议
+			 客户端发送 : 5,zs,ls,hello ls
+			
+			 服务器回复 :
+							5,zs,ls,hello ls
+							
+
+	新建立群
+
+	
+	
+	加入群
+	
+	
+
+	群聊
+	
+		协议
+			 客户端发送 : 6,zs,
+			
+			 服务器回复 :
+							1,ok
+							1,nook
+							
+							
+							
+							
+	传输文件
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		

@@ -1,0 +1,290 @@
+
+css：cursor:pointer;//设置手型
+浏览器三大模块
+	html+css webkit
+	js  V8引擎
+	net
+
+堆栈的来源
+
+JavaScript：
+	基于对象 基于事件驱动 弱类型的  解释性语言
+
+1.1
+	1.数据类型
+	
+		基础类型
+			数值类型
+			字符串类型
+			布尔类型
+			undefind类型
+			
+		引用类型
+			数组
+			函数
+			自定义的对象
+			null
+			
+1.2
+定义变量
+	var/let
+	例：var num=100;
+	一个变量可以不赋值。类型是undefind类型
+
+类型检测：
+	typeof(num);typeof num
+	
+输入：
+	prompt();
+	
+打印输出：
+	console.log();
+
+弹出对话框：	
+	alert
+		
+数值类型：number
+	所有类型的数值
+	
+字符串类型：string
+	只要是用引号的
+	
+布尔类型：boolean
+	false  true
+	
+undefind类型：没有值的变量。
+
+数组：Object
+	例：var num = [];
+	
+函数：function
+	例：var num = function();
+	
+对象：Object
+	例：var num = new Object();
+
++ 二义性： 算数   连接字符串
+	
+== 与 ===  全等与值等
+
+常用函数：
+	alert
+	console.log();
+	prompt();
+	document.write();
+	
+	
+	
+	header
+ctrip文件夹
+	img文件夹
+	css文件夹
+		base.css
+			body ul li p h1 h2 h3 h4 h5 h6{		
+			padding:0;margin0;list-style:none;
+			}
+			
+			body{
+				background;
+				font:;
+				
+			}
+		index.css
+		响应式.css
+	js文件夹
+		.html
+	index.html
+
+less语言  @开头
+
+javascript:;链接失效
+设置鼠标的样式：
+cursor:pointer
+
+1.鸡兔同笼   35个头 94只腿 共有多少只鸡 多少只兔子
+2.while循环，用户名 ：张三 密码： 123456
+	都输入对了，登录成功，否则最多输入三次，提示：最多试错三次
+3.var arr=[10,20,5,6,30,50]  从小到大进行排序   函数   3中方法   冒泡   选择排序  快速排序
+4.列出1000个的斐波那契数列  兔子数列
+
+函数
+java 方法
+就是将某一特定功能的代码结合起来，能够重复的利用
+	函数定义的第一种方式：
+		1.关键字定义法
+			function 函数名（形参）{}
+			函数名(实参)
+		2.直接量
+			var fn=function(){}
+		3对象的方式
+			var fn = new Function()
+		4.匿名的方式
+			(function(){
+				})
+	函数调用的方式
+		1.通过函数名（）调用
+		2.自调用方式		（function(){}）()
+		3.事件调用函数		
+参数：
+	1.参数可以接受任何的数据类型；
+	2.实参和形参是一一对应的
+	3.如果实参少于形参，多出的形参值是undefined
+	4.如果说实参多余形参，那么多出的实参 通过arguments来获取
+返回值：
+	return   1.终止函数的运行	2.给函数返回值	return+值  终止并返回值
+	
+	
+	arr.sort(); 数组排序	 111,23,45,3,4,5会出现问题。只对首位进行排序 arr.sort(function (a,b){return a-b})
+	charCodeAt(0)转换ASClI码
+	arr.sort(function(){		//回调函数
+	
+	})
+	递归函数：自己调用自己	重复利用逻辑
+	回调函数：自己调用别人  调用别人得力量
+	
+JSON格式(属性:值)
+	var stu={name:"张三",age:12} stu["name"]  /  stu[0].name;
+	for(var i in stu){stu[i]}
+	
+	
+	
+class aa{  }
+function aa(){this.name="zhangs"; this.say=function(){alsert(this.name)} }  var bb=new aa(); bb.say();
+
+类：
+	在JavaScript中
+	函数得用法
+	1.讲某一规则集合起来，可以重复利用
+	2.有类得功能，功能函数
+	
+	
+	
+	
+	
+9.11
+
+			寻物算法   碰撞算法
+
+constructor()构造函数:
+
+class myArray{
+	constructor(){
+		for(var i=0; i<arguments.length;i++){
+			this[i] = arguments[i];
+		}
+		this.length=arguments.length;
+	}
+	push(val){
+		alert("追加数据")
+		this[this.length]=val;
+		this.length=this.length+1;
+		alert(this.length);
+		console.log(this);
+	}
+}
+var arr = new myArray( 1,2,3,4)
+arr.push("s")
+
+
+
+
+
+Array.ptototype.push=funnction(){
+	alter("改掉了");
+}
+arr.push();
+
+prototype 原型    构造函数 ---》  存放在静态区   用 Array.prototype.XXX=function(){}可以覆盖JavaScript本身的方法
+
+function tanke(){
+	this.tankew=100;
+}
+tanke.prototype={
+	createtanke(){
+		var div =document.createElement("div");
+		div.style.cssText="width:"+this.tankew+....+;		//屏幕得宽度document.createElement.clientWidth
+		document.body.appendChild(div);
+	}
+	
+	move(){
+		var that=this;
+		document.onkeydown=function(e){
+			console.log(e.keyCode);
+			switch(e.keyCode){			
+				case 37:
+						that.tanke.style.left=that.tanke.offsetLeft-10+"px"
+							break;
+				case 38:
+							break;
+				case 39:
+							break;
+				case 40:
+			
+			}
+		}
+	
+	}
+	
+	
+}
+var game = new tanke()
+game.createtanke();
+game.move();
+
+
+function person(){
+	this.name="zs";
+}
+
+person.prototype={
+	say:function(){
+		alert(this.name)
+	}
+}
+function stu(){
+
+}
+stu.prototype = new person();//原型继承  stu.prototype = person.prototype;
+	new stu();
+
+//类继承： class stu extends person{
+	constructor(){
+		super()
+	}
+}
+new stu;
+
+
+及早绑定：var obj={name：“zs”}
+晚绑定：obj.name="zs"
+
+原型链 
+
+继承链  
+
+作用域链
+	全局 局部   提高程序得运行效率，节省内容  防止变量污染
+	
+	
+程序的域解析 (alert(abc);  var abc;  不会报错)：先进行域解析：1.检查词法 2.变量的解析 3.块 4.函数
+
+闭包：在一个函数里面嵌套另外一个函数，当里层函数引用外层函数变量，并且里层函数调用的时候 闭包形成
+	能够让局部变量的变化值保存下来。
+	需要保留局部变量的时候 ：造成内存泄漏。
+	funnction fn(){
+		var num =0;
+		return function(){
+			num++
+		}
+	}
+	var a=fn(); a(); a(); a();
+
+ECMAscript  核心
+对浏览器操作：JavaScript：
+flash   actionscript
+服务器： nodejs
+	bom  浏览器对象模型
+	dom 文档对象模型
+	
+	地址栏：location>location.href="http://www.baidu.com"      location.hostname .port  pathname search .hash .protocol
+		#》 锚链接

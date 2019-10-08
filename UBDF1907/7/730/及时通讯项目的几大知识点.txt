@@ -1,0 +1,206 @@
+GUI
+	gui编程的思路（网页也一样 c#也一样）
+	
+	API application programmer interface 应用程序编程接口
+		
+		就是API文档中的内容，其实就是javadoc导出的文档，也就是教你如何使用类，如何使用类中的方法
+		的java的 jdk 帮助文档。
+		
+	java.swing.*
+	java.awt.*
+	
+	
+	1 选控件 
+		界面需要几个按钮，几个输入框 几个下拉菜单 几个label。。。
+		JFrame 
+				setTitle
+				setSize
+				setLocation
+				setDefaultCloseOperation(JFrame.exit_on_close);
+				setVisiable(true);
+				
+				
+				add
+				
+				
+				
+		JPanel JLabel JTextField JPasswordField JButton
+		
+		
+	2 布局
+		控件放到哪里 ，也就是位置
+			
+			相对布局
+				BorderLayout		上下左右中
+				FlowLayout			从中间到俩边
+				GridLayout			表格 n行n列
+				
+				
+			绝对布局
+				容器设置setLayout(null)
+				容器中的控件设置的是setLocation(x,y)
+		
+		
+	3 加监听
+	
+		一个按钮点击是不得有反应？这个就要给这个按钮加一个监听事件
+		
+		比如加一个点击事件，把代码写事件处理部分
+		
+		事件包括鼠标事件 、 键盘事件。。。
+		
+		addActionListener(new ActionListener(){
+		
+			public void actionPerformed(ActionEvent e){
+				
+				
+			
+			}
+			
+		
+		});
+		
+
+IO和网络编程
+	
+	
+	IO
+		
+		File类既代表文件也代表文件夹。但是File类不能对文件本身进行读写，读写还要靠IO;
+	
+		IO就是java当中读取或写的工具，想要读写数据就要用IO类
+		
+		IO流的分类
+			
+			字节流和字符流
+			
+				字节流InputStream 和 OutputStream （抽象类）系列子孙
+						比如读写文件FileInputStream。。。
+
+				字符流Reader 和 Writer （抽象类）系列子孙
+						比如读写文件FileReader 和 FileWriter。。。
+						
+						
+				字节流什么类型的数据都可以读，字符流读取纯文本字符
+				
+			
+			输入流和输出流
+			
+				In Reader 是输入
+				Out Writer Print是输出
+				
+			带不带缓冲功能
+			
+				Bufferd或print 就是有缓冲功能，配合flush
+				
+		
+		
+		读的数据源或目的地常见的有
+			
+			文件 File
+			网络 socket
+			内存
+			。。。
+			
+	网络
+		IP
+		Port
+		
+		TCP和UDP
+		
+			TCP是传输控制协议：电话 事先需要建立连接 ip port 安全有保障
+			
+			UDP用户报协议	 ：写信 有可能丢失数据 也不保证顺序
+			
+		
+		
+
+关于异常
+
+	掌握java的异常体系
+			
+									Throwable
+			
+			
+			error										exception
+			
+			
+		AnnotationFormatError, 				RuntimeException		 ClassNotFoundException IOException,SQLException,
+		AssertionError, 
+		AWTError, 						NUllPointerException 
+		CoderMalfunctionError, 			, ArithmeticException
+		FactoryConfigurationError,      IndexOutOfBoundsException,
+		FactoryConfigurationError, 
+		IOError,
+			
+		
+	
+		Throwable是java异常体系的顶级父类，它的系列子孙才可以被java虚拟机抛出，或者throw 关键字抛出
+		或者是作为catch块的参数。
+		
+		error是错误，个数比较少，但是战斗力比较强，一个程序就奔溃
+		
+		exception是异常  个数非常多，但是没error的厉害 可以修复
+			
+			exception下分为俩大类，
+				一类RuntimeException和他的分支
+		
+				另一类是 RuntimeException 和兄弟，是和它并列的
+	
+
+		
+	掌握编译时异常和运行时异常的区别
+
+
+
+	掌握常用的编译时异常和运行时异常
+		
+		
+	
+	掌握几个关键字
+	
+		try
+		
+		catch
+		
+		finally
+		
+		
+		throw
+		
+		
+集合框架或容器
+
+	String[] names = new String[]{"zs" , "ls" , "ww"};
+	
+	数组是有缺陷的，最大的问题是长度是限定的。无论是静态初始化还是动态初始化都是一定的长度。
+	
+	
+	如何解决这个问题？集合框架
+	
+		集合框架的重点的API
+		
+			List（有序，可重复）
+				ArrayList
+	
+			Set （无序，不重复）
+				HashSet
+	
+			Map (不是集合框架 强关联)
+				HashMap
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		

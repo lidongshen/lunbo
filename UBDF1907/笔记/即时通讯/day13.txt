@@ -1,0 +1,168 @@
+赵士琛（chen）
+
+即时通讯项目驱动（局域网qq）
+
+需求分析
+	注册
+	登录
+	搜索好友
+	加好友
+	私聊
+	群聊
+	传文件
+	。。。
+
+涉及到的知识点
+
+	所有的基础知识（任何编程语言基本一样）
+		数据类型和变量
+		运算符
+		表达式
+		流程控制
+			顺序
+			分支
+				if else if
+				switch case
+			循环
+				while
+				do while
+				for
+				foreach
+		数组
+		函数
+		
+	如果是面向对象的语言
+		类
+		对象
+		this super
+		
+		
+		封装
+			访问控制修饰符 private default protected public
+		继承
+			extends
+		
+		多态
+			定义接口不定义实现 定义抽象不定义具体
+			
+		抽象 4大特征多一个抽象
+			abstract | final
+				
+		
+		接口 是彻底的抽象类
+	
+
+	专题API
+		集合
+		文件IO
+		GUI
+		网络编程
+		多线程
+		反射
+		正则
+		。。。。
+		
+
+数据库
+	是专门存储数据的软件，商业数据都是存在数据库的
+	如果是关系型数据库，类似于excel的展示 二维展示 行和列
+	
+GUI
+	graphy user interface 图形用户界面 对比的 命令行黑窗口的
+	
+	
+
+正式开发项目
+
+	先按照项目的流程做一个界面原型，先写界面，然后再说功能 这样可以给客户看到项目的
+	效果，包括一些交互，比如按钮点击，还是指纹输入。。。
+	
+	
+	做界面还有一点原型，简单点，直观效果
+	
+	
+	
+	1 做界面
+		
+		项目其实分为2端，服务器端和客户端 大部分界面应该是在客户端
+		
+		先建立工程 ChatClient 和 ChatServer
+		
+		需要注意的是package 工程下边package如何划分
+		
+		
+		com.uek.view		界面层
+		com.uek.service		业务逻辑层
+		com.uek.dao			数据访问层
+		com.uek.domain		数据层		
+		
+		com.uek.exception	自定义异常
+		com.uek.utils		工具类 其中可以有多个工具
+		com.uek.test		单元测试类
+		
+		
+		首先明确界面编程属于GUI 图形用户界面编程
+		
+		gui编程的思路（网页也一样 c#也一样）
+			1 选控件 
+				界面需要几个按钮，几个输入框 几个下拉菜单 几个label。。。
+				JFrame 
+						setTitle
+						setSize
+						setLocation
+						setDefaultCloseOperation(JFrame.exit_on_close);
+						setVisiable(true);
+						
+						
+						add
+						
+						
+						
+				JPanel JLabel JTextField JPasswordField JButton
+				
+				
+			2 布局
+				控件放到哪里 ，也就是位置
+					相对布局
+						BorderLayout		上下左右中
+						FlowLayout			从中间到俩边
+						GridLayout			表格 n行n列
+						
+						
+					绝对布局
+				
+				
+				
+			3 加监听
+			
+				一个按钮点击是不得有反应？这个就要给这个按钮加一个监听事件
+				
+				比如加一个点击事件，把代码写事件处理部分
+				
+				事件包括鼠标事件 、 键盘事件。。。
+				
+			
+		1.1 登录界面
+			
+				 
+			
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		

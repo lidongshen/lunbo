@@ -1,0 +1,111 @@
+Structured Query Language
+Data Manipulation Language
+Data Definition Language
+Data Control Language
+
+sql中常用数据类型：
+	1）int ：整形数据，存储大小为4个字节
+	2）char（size）：定长字符数据，如果没有指定尺寸，默认为1个字节，最长为255个字节
+	3）varchar（size）：可变长字符数据，可以根据字符串的实际长度进行保存。注意：该类型必须要指定长度，否则报错
+	4）float（m，d）：单精度，M代表整数位加小数位 ，d代表小数位。
+	5）double(m，d)：双精度，。。。。 15
+	6）date：日期型数据类型，默认格式：yyyy-mm-dd
+	7）BLOB：大对象类型，以二进制的方式来存储长文本数据（视频，音频），最大可以存储4G
+	8）text：存储长文本数据（纯文本），最大可以存储4G单个文本
+
+关于数据库的日常操作：
+	显示当前mysql数据库中有哪些数据库show databases
+	使用指定的数据库：use 
+	显示当前数据库下的所有表：show tables
+	创建自定义数据库：create datebase 数据库名
+	创建表：
+	
+命名规范：在数据库中，如果标识符有多个单词构成，使用 下划线分割。
+
+注意：1. 日期类型需要添加单引号 ''
+	  2.更新数据：update 如果没有指定过滤将对全表进行修改。
+	  3.delete 如果没有满足条件，将无法删除任何数据。
+	  4.create table 数据库名.表名： 指定在数据库下创建。
+	  5.在唯一性约束下。null值可以插入多次。
+	  6.外键约束：主表在创建外键时，主表的字段引用其他表对应的这个字段，要求必须是该表的主键，否则主表无法创建外键。
+	  7.检查约束：MySQL8.0版本支持
+	  
+创建表、管理表：
+	create table: 创建表关键字 ：create table 表名（字段名 数据类型（尺寸） .....）;
+	在创建表时，必须要指定：表名、字段名、数据类型、尺寸
+	
+	自定义创建表：
+	
+	使用子查询创建表：
+		1）在创建表的过程中，执行一个select操作，然后将查询结果返回。
+		2）AS关键字：连接创建表和查询表的操作。
+		create table t_emp2 AS select employee_id,last_name from employees;
+		1)再插入表数据的过程中，自定义新表的字段名。
+		2）创建一张表，该表的结构和数据与原表一样。
+		3）只复制表结构：1=2；
+
+修改表：
+	通过alter table 来对表进行修改
+	给表添加一个字段： alter table 表名  add 新字段名 数据类型
+	删除一个列： alter table 表名 drop 新字段 数据类型
+	修改一个列：数据类型 数据长度 alter table 表名 modify 新字段名 数据类型 该操作建议使用修改空表
+	重命名字段名：ALter table 表名 change 旧字段名 新字段名 	
+	重命名表名：alter table 旧表名 rename to 新表名
+删除表：drop table 表名
+
+插入表数据： 1) 按照字段默认的顺序赋值：insert into 表名 VALUES(字段值,....);
+			 2) 按照指定的字段进行赋值。
+			 3）基于现有的表导入数据。insert into 表名(字段，。。。) select  字段 ,.. from 表名 ;
+			 
+更新数据：update 语句：update table set 字段名=新值, ... where 过滤条件。 
+
+删除表数据：delete 语句 ：delete from 表名 where 过滤条件 
+
+数据库中的约束：
+	约束：对表中的字段进行一种强制的规定
+	常用的约束：
+		1）非空约束：not null
+		2）唯一性约束：unique
+		3）主键约束：primary key  = 非空+唯一
+		4）外键约束：foreign key  
+		5）检查约束: check
+		6）默认值约束：default
+		
+	添加约束有两种方式：1）列级约束 
+						2）表级约束（创建表后，添加约束）：
+								alter table 表名 Modify 字段名 数据类型 not null；
+								表内末尾：conconstraint 约束名称 约束类型 （字段名）
+											constraint 表名_字段名_uk unique（字段名）
+											
+	约束API
+		非空约束：
+		主键约束：用来表示表中唯一的一条记录，
+					constraint t_stu_sid_pk primary key(sid);		
+
+		外键约束：表级约束，创建外键
+					语法：CONSTRAINT 外键名 foreign key(当前的外键字段)REFERENCES 关联表名（关联字段）
+					CONSTRAINT t_stu6_cid_fk FOREIGN KEY(cid) REFERENCES t_class(cid) references
+					
+					#注意：在外键约束下，被引用的数据，无法直接删除，
+#      						只能先删除引用数据，然后再删除被引用数据
+					删除： 第一步：
+						   第二步：
+				
+		检查约束： 对某个字段进行条件约束
+					check(salary>3000)
+					
+		默认约束： 如果在添加数据时，没有给指定默认值的字段添加数据，则为默认值。
+					sex CHAR(3) DEFAULT '男'
+
+MySQL 分页：
+		分页语法：limit 数字1， 数字2
+				数字1：每页显示的数据的起始位置
+				数字2：每页显示的数据条数。
+			公式：limit（当前页-1）*每页条数，每页条数。列：显示第一页20条数据：limit (1-1)*20,20 = limit 0,20
+				显示第二页20条数据：limit (2-1)*20,20 = limit 0,20
+				  limit 5 ；限制输出5条。
+				  
+				  
+SQL 高级:索引、事务、（存储过程），sql优化。
+
+web项目： 前端（郭老师）+后台 （ssm，springBoot）+数据库（MySQL，Oracle）；

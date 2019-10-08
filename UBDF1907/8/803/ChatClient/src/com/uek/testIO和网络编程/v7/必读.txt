@@ -1,0 +1,29 @@
+实现
+	群聊
+	私聊
+	
+	
+关键是网络协议（双向的）
+	
+	注册
+		客户端和服务器
+			1,zs 						
+		服务器和客户端返回
+			1,ok
+			1,nook
+	群聊
+		客户端和服务器
+			2,zs,hello everyone	
+									
+		服务器和【所有】客户端返回
+			2,zs,hello everyone	
+	私聊
+		客户端和服务器
+			3,zs,ls,hello ls	
+									
+		服务器和ls客户端返回
+			3,zs,ls,hello ls
+			
+			
+			
+			

@@ -1,0 +1,10 @@
+dcl:grant revoke
+dml:insert select delete update
+ddl:create table, alter table, drop table,truncate table
+tcl:事务控制语言：commit,rollback
+关键字，表名，列名不区分大小写，oracle:字段区分大小写
+			   mysql:字段不区分大小写
+
+字符串拼接：SELECT '员工id'||SID||'员工'||SNAME||'生日'||BRITHDAY as "in"
+	   FROM T_STU
+

@@ -1,0 +1,103 @@
+
+String
+	length.返回长度
+	charAt 返回指定索引的char值
+	equals 内容判断
+	equalsIgnoreCase 忽略大小写判断
+	compareTo 两个字符串内容的大小
+	indexOf（） 返回指定字符下标
+	lastIndexOf（） 返回指定字符最后一次下标
+	startsWith  测试此字符串是否以指定的前缀开始。 
+	endsWith	测试此字符串是否以指定的后缀结束。 
+	substring  返回一个新的字符串，它是此字符串的一个子字符串。该子字符串从指定索引处的字符开始，直到此字符串末尾。
+	replace 替换字符或串
+	trim 去掉空格
+	concat 字符串连接
+	contains 返回一个字符串包含某个
+	split 指定的字符切割
+	
+StringBuffer
+	可以进行增删改操作
+	增：append
+	删： delete
+	改：replace
+	String <——>StringBuffer
+		1、2种StringBuffer -> String  : toString   new String();
+		2、 2种String -> StringBuffer   ：  new StringBuffer();  .append();
+	
+	jdk1.5之前：StringBuffer 线程安全，效率低
+	jdk1.5之后：
+	兄弟类：StringBuilder  线程不安全，效率高
+	
+Java 强类型 -->  数据类型明确 -->弱类型（开发领域 ）
+
+Math类：
+	开方：sqrt
+	求幂：pow
+	向上取整：ceil
+	向下取整：floor
+	四舍五入：round
+	求绝对值：abs
+	随机数：Math.random
+	求最大值：max
+	求最小值：min
+	
+System类：
+	System.out 返回PrintStream对象
+	System.in    InputStream is = System.in;  
+	System.erro     
+	System.exit()
+	System.gc()
+	
+BigInteger和 BigDecimal:
+	BigInteger 用于保存数据范围比long型更大的整数。
+		add()  subtract()    multiply()   divide()
+	BigDecimal 用于保存比double精度更高的浮点数。
+	
+JDK1.8之前：
+	System类：
+		System.currentTimeMillis():以毫秒方式返回。  时间戳：毫秒数
+	
+	Date类：		
+		Java.util.Date类：以对象方式表示当前系统
+		Java.sql.Date类(子类)：对应数据库日期类型
+		两个构造方法：
+			1.new Date();  
+			2.new Date( long值 );
+		两个功能方法：
+			1.date.getTime();//时间戳
+			2.date.toString();//国际时间格式   
+
+	SimpleDateFormat类：  对日期date类对象进行格式化。
+		构造方法：
+			SimpleDateFormat()：用默认的模式和默认语言环境的日期格式符号
+			SimpleDateFormat("yyyy.MM.dd HH:mm:ss ")
+		方法：
+			.format(date)
+			
+		格式化：
+			
+		解析：必须按照指定好的格式进行解析
+			parse(String source)
+			
+	Calendar:日历类
+			通过方法创建：Calendar.getInstance();
+			get()
+			set(int field, int value)
+			add(int field,int amount)为给定的日历字段添加或减去指定的时间量
+			getTime 转Date对象
+			setTime 
+			
+JDK1.8之后：
+	LocalDateTime
+		now();//从默认时区中的系统时钟中获取当前日期时间。
+		of(int year,int month,int dayOfMonth,int hour,int minute)获得 LocalDateTime从年，月，日的一个实例，小时和分钟，设置第二和纳秒到零
+		plusYears(long years)返回一份本 LocalDateTime年指定期间补充。 years -加年，可能是负的 
+		minusYears(long years)返回一份本 LocalDateTime与指定期在年中减去。 
+
+	LocalDate
+		now(); 在默认时区中从系统时钟获取当前日期。
+	LocalTime
+		now();//从默认时区中的系统时钟中获取当前时间。
+		of(int hour, int minute,int second)获得 LocalTime实例从一个小时、分钟和秒。
+	

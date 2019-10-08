@@ -1,0 +1,444 @@
+javascript:基于对象,基于事件驱动，弱类型的解释性语言（弱类型语言可移值性高）
+ 基础类型：1.数值类型
+	2.字符串类型
+	3.布尔类型
+	4.undefind
+
+ 引用类型：数组
+	函数
+	json
+
+	自定义的对象
+	null
+var num = 100;
+console.log(typeof(num))控制台打印是什么类型
+==比较内容 ===比较内容和类型
+var num = prompt("请输入") 屏幕弹出输入框
+document.write();文档写入
+alter()弹出消息框
+if()和switch区别：switch的结果确定
+while和for的区别：for的循环范围确定
+函数
+定义方式：
+			关键字定义法：function(形参)不能以数字开头
+			直接量：var f = function(){}
+			对象的方式：var f =new  function()
+			匿名的方式（function(){}）
+函数调用的方式：
+			函数名（）
+			自调用（function(){}（））
+			事件调用（）
+可以接收任易的数据类型
+实参和形参一一对应
+实参少于形参的个数，少的是undefined
+多出的实参用arguments[]来获取			
+return1.终止函数的运行	2.给函数返回值
+构造函数：实例化对象的生活，自动执行的函数叫构造函数
+函数的用法：
+	将某一规则集合起来，可以重复利用
+
+	有类的功能，构造函数，把函数作为类去使用（构造函数）			
+		
+				
+原型
+	类名.prototype={
+		say:function(){
+			方法
+		}
+		say(){
+		}
+	}			
+	Array.prototype.push=function(){
+		alert("改掉了")
+	}		
+				
+				
+原型链(继承链)
+	prototype
+作用链
+	由内向外
+程序的预解析
+	1.词法解析	
+	2.变量的解析
+	
+闭包
+	在函数的里面嵌套另一个函数，
+	当里面的函数引用外层函数变量，并且里层函数执行下时候
+	能够让局部变量保存下来
+	需要保存局部变量的时候，造成内存的泄露	
+bom浏览器对象模型
+	location.href="baidu.com"
+
+				
+				
+获取http协议：alert(location.protocol)
+location.hostname .port(端口)  pathname search .hash .protocol
+发生了什么事情
+	鼠标事件（click,dbclick,mousedown,mosueup,mouseover,mouseout,mousemove）
+	键盘事件（keydown,keyup,keypress）
+	自带的事件（onload）
+	硬件的事件
+
+	移动端
+	触摸事件：touchstart touchemove touchend
+目标对象：事件源
+做了什么事情：事件处理程序
+事件源 事件 做了什么事情
+html对象.On事件=function(){
+	做的事情
+}
+document:对内容 html对象.innerhtml操作 
+	    属性1.html自带的属性，自定义的属性：设置属性setattribute(“aa”,"bb")
+		操作class需要是className不能直接.
+
+div.style.width获取行内的样式
+getcomputedstyle(div,null).width
+offsetWidth获取真正的尺寸
+
+定时器：setInterval()在指定是时间不断执行某些代码
+		clearinterval清除定时器
+        settimeout()在指定的时间内执行一次代码
+
+a href="javascript:;"保持手型，不跳转
+blur失去焦点
+focus获得焦点
+
+鼠标事件的事件对像记录的信息
+e.clientX,e.clientY(距离浏览器左上角的距离)
+e.screenX,e.screenY(距离屏幕左上角的距离)
+e.offsetX,e.offsetY(距离事件源的左上角的距离)
+
+e.preventdefault()阻止浏览器默认行为
+
+visibility;hidden看不见
+			visiable看见
+
+键盘事件（onkeydown）
+	1.e.keyCode(which)获的键盘码
+	String.fromCharCode(65)转换成对应的字符
+	var str="abc"
+	console.log(str.charCodeAt(0))//97数字转换成字符码
+	2.code，检测键盘字母，左右键
+	3.key  输出需要的字符
+	e.ctrlkey判断是不是按下ctrl键
+	
+	1.函数的本意
+	2.类去使用 构造函数
+	3.对象使用
+		行程作用域，避免全局污染
+	
+	
+	动态控制元素
+		创建document.createlement
+		插入appendchild
+		删除removechild
+		克隆clonenode(true)
+		替换replacechild(新元素，旧元素)
+		获得父元素:子节点。parentNode
+		
+		radom随机数
+		num.toFixed()保留几位数字
+		Math.floor(num)向下取整
+		Math.ceil(num)向上取整
+		Math.PI
+		Math.sin
+		Math.cos
+		
+	事件流 事件执行的流程
+		1.冒泡型 最确定的元素像不确定的元素执行， 最里层像最外层执行
+		2.捕获型  最不确定的元素像确定的元素执行
+		
+		e.target目标
+		
+		contentedittable
+		setAttribute()设置属性
+	
+	osi	模型
+	open system interconnection	
+		1.物理层
+			硬件的标准，电压电流以及数据格式的定义
+		
+		2.数据链路层    局域网进行通信
+			对数据进行分组
+
+		3.网络层	ip地址 网关
+			定义了寻找 外面局域网的规则
+			
+			
+		4.传输层	定义了端对端之间的协议， 端口  tcp邮箱 udp视频
+		
+		5.会话层
+			身份认证
+			
+		6.表示层
+			转换不同平台之间的差异
+			
+		7.应用层  http pop ftp
+			将数据根据不同的应用程序来进行呈现
+		
+		
+		
+		1.网络接口层
+		
+		2.网络层 ip
+		
+		3.数据传输层 tcp
+		
+		4.应用层 http https pop3 ftp
+
+		
+jsp
+
+		default charset=utf8
+			out.println（"heelo"）输出到客户端
+			
+			taglib 引入自定义的标签
+			include fie=""引入其他页面
+			page
+		
+		表单
+			<form action="提交的页面" method="get/post"> get提交数量有限，最多4k地址栏提交 
+			文本域：
+				 隐藏type="hidden"
+				 自动补全autocomplete="on" off
+				disabled禁用，变灰
+				姓名：（给人看）<input type="text" value="默认值给程序看" size="大小" placeholder="请输入i姓名（一输入就没了）">
+				<input type="password">
+				<input type="radio" checked="checked" name="sex" value="0">
+				<input type="checkbox" value="run">
+				<select>
+					<option selected="selected"默认选中></option>
+					<option></option>
+					<option></option>
+				</select>
+				<textarea cols="列数" rows="行数"></textarea>设置css为resize:none，不能拉大
+			
+			按钮
+			
+				<input type="button" value="按钮"/>
+				<button > </button>
+				提交按钮<input type="submit" value="提交" />
+				重置按钮<input type="reset" value="重置" />
+			
+			Strong mane=request.getParameter("name")
+		
+		表单事件
+		
+			表单和body能通过document.form和document.body获得
+			var form = document.form;
+            var name = document.form.name;
+            form.onsubmit=function(e){
+              
+                if(name.value==""){
+                    alert(1)
+                    e.preventDefault()
+                }
+            }
+			
+			name.onblur=function(){
+				
+			}
+			name.onfocus=function(){
+				
+			}
+			内容改变 一般作用在下拉框元素上，当选中的内容发送改变的时候出发
+			opt.onchange=function(){
+				opt[opt.selectIndex(缩引)].value(值)
+			}
+			实时监测到内容的改变
+			name.oninput=function(){
+			
+			}
+			name.onkeydown=function(){
+				
+			}
+		
+		请求头，响应头，通用头
+	cookie
+		http协议的一部分，记录客户访问的状态，会存在本地硬盘存在特定的文件
+		
+		小甜点，服务器给客户端
+		设置Cookie
+			Cookie cook=new Cookie("name","zhangdan");
+			response.addCookie(cook)
+			response.sendRedirect("");
+		获取Cookie
+		Cookie[] cookies=request.getCookies()
+		getName() getvalue()
+		
+	session
+		
+		
+		
+	埋点的方式
+
+		1.代码埋点
+			客户端埋点
+				搜索页面展示，点击类型
+				
+			
+			服务端埋点
+				实时收集，数据准确
+		
+		
+		2.可视化埋点 数极客
+		3.无埋点 第三方mixpanel
+		
+		
+		complete不管成不成功，都执行
+		
+		
+		session.removeAttribute删除单个session
+		session.invalidate()；删除所有的session
+		设置setAttribute("login","yes")
+		session.setMaxInactiveInterval(30);设置生存周期
+		
+		ajax:（解决页面的跳转的问题）2005年诞生 js的异步和数据通信
+			基于b/s架构的软件
+				浏览器和服务器
+			c/s架构的软件
+				客户端pc/服务器
+				
+			async javascript and xml
+			异步问题
+				基于对象 基于事件驱动 弱类型的 解释性语言 单线程异步语言
+				
+			异步的情况
+			1.所有不确定什么时间执行的代码，全是异步的
+			2.需要明确等待执行的代码
+			3.在正常的代码执行完（空闲）的时候，再去执行异步的代码
+			
+			xml（存储数据）
+				标签语言的鼻祖，html也是由xml语法演化而来
+			var ajax = new XMLHttpRequest()
+			状态的改变
+			ajax.onreadystatechange=function(){
+			if(ajax.readyState==4){
+				if（ajax.status==200）{
+					ajax.response 获取的是文本 String
+					ajax.responseXML获取的是对像 object
+					
+				}
+			}
+				console.log(ajax.readyState)
+			
+			}
+			准备出发
+			ajax.open("get/post/put/delete","1.html",true,/*"username","password"*/)
+			发送
+			ajax.send()
+			
+			1.准备出发
+			2.已经出发
+			3.找到地址
+			4.返回信息
+		
+		
+		1.客户端没有给到多样化的请求
+		2.通过ajax如何传递参数
+			get 1.html?name=zhangsan
+			post ajax.send("name=zhangsan")
+			
+		服务器接受客户端的请求
+			1.请求的方式 
+			2.请求的地址
+			3.请求的数据
+			4.请求的格式
+			5.服务器返回的数据的常态（数据库的数据）
+			6.数据库的数据怎么给ajax返回
+			7.返回数据的格式是什么格式 Java对象 
+		
+		jquery
+			1.隐式的循环
+			2.快速的查询元素 首要特性
+			3.链式调用
+			
+			function myjquery(){}
+			function $(){
+				return new myjquery();
+				
+			}
+		
+		/\s/g
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			

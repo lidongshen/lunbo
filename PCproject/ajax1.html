@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax1</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid tomato;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+
+
+        window.onload = function () {
+            var input = document.querySelector("input")
+            input.onclick = function () {
+                var ajax = new XMLHttpRequest();
+
+                ajax.onreadystatechange = function () {
+                    if(ajax.readyState==4){
+                        if(ajax.status==200){
+                            var xmldoc = ajax.responseXML
+                            
+                            var names=xmldoc.querySelectorAll("name")
+                            var ages=xmldoc.querySelectorAll("age")
+                            var sexs=xmldoc.querySelectorAll("sex")
+                            var table = document.createElement("table")
+                            var tr=""
+                            for(var i=0;i<names.length;i++){
+                                td=""
+                                tr+="<tr>"
+                                td+="<td>"+names[i].innerHTML+"</td>"
+                                td+="<td>"+ages[i].innerHTML+"</td>"
+                                td+="<td>"+sexs[i].innerHTML+"</td>"
+                                tr+=td
+                                tr+="</tr>"
+                            }
+                            table.innerHTML=tr
+                            
+                            document.body.appendChild(table)
+                       
+                        }
+                    }
+                }
+
+                ajax.open("get", "xml.xml")
+                
+                ajax.send()
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="获取">
+    <div>
+
+    </div>
+   
+</body>
+
+</html>

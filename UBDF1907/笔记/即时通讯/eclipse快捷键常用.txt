@@ -1,0 +1,115 @@
+关于Debug调试
+
+	会打断点 编辑区左侧双击看到有个点
+	
+	会debug启动 debug as 不是run as  确认视图切换 confirm perspective switch
+	
+	掌握3个视图
+		debug
+			f5		进入到该行某一个方法内部执行（如果只有一个方法 就这个方法）
+			f6		单行执行
+			f8 		直接跳到下一个断点，如果后续没有断点可停，直接运行完毕
+			
+		variables
+		breakPoints
+		
+	
+
+eclipse的常用快捷键必须掌握否则肯定是菜鸟
+	
+	ctrl + shift + o 去掉无用的import，加上没有的classpath中有的
+	
+	ctrl + o outline 大纲 概览 可以查看一个类的成员
+	
+	                                                                                      
+	alt + shfit  + r 重命名 类名 methodName fieldName variableName 
+	
+					 最强大的是只要引用的地方全部改名 比如1000个。。。
+	
+	
+	ctrl + alt + 向下的箭头 复制当前一行到下一行
+	
+	
+	
+	
+	alt + 上下方向键 移动n行
+	
+	alt + 左右方向键 进入到某个类或某个方法，继续进入，还可以依次返回
+			         跟踪源代码很好用
+	
+	alt + shift + s  产生getset方法 重写方法 toString方法 hashCode 和equals方法等
+	
+	ctrl + f 搜索替换
+	
+	ctrl + c ctrl+v
+	
+	ctrl + shfit + f 格式化代码 f format
+	
+	ctrl + tab键 整体往左挪动 tab 或 4个space
+	
+	tab键 		 整体往右挪动 tab 或 4个space
+	
+	
+	ctrl + shift + w 
+	
+	ctrl + d delete 
+	
+	
+	ctrl + shift + r resource 查找工程中的的资源 比如java 配置文件。。
+	
+	ctrl + shift + t type  查找classpath中的jar中class
+	
+	
+	ctrl + shift + w 关闭所有打开的tab
+	
+	
+	ctrl + shift + / 块注释
+	ctrl + shift + / 取消块注释
+
+	alt + shift +j	给类或者方法加文档注释 注意光标的位置
+	
+	
+
+关于异常处理
+
+	一般出错会显示异常堆栈信息（A--》B---》C---》D。。。）
+	
+	解决思路是从上往下看第一行自己写的代码，怎么说是自己的？看package名字
+	
+	这一行点进去，结合异常信息的说明。。。
+	
+	
+	特别需要注意的是NullPointerException
+	
+		这个异常一般情况是.前边的是null 访问一个null的field或methiod
+		特殊情况是 ()参数是null
+		
+	
+	
+关于学习的方式重点
+	
+	能够查看api 用好api
+
+	写代码的时候了解背后的内存分配 堆栈
+	
+	能够debug
+	
+	
+	读源代码。。。
+	
+	
+要清除perstecive和view的区别
+
+	perstecive是一堆view的组合
+	
+	比如debug perstective 是 Debug view Variable View BreadLInks Console View的一个组合
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

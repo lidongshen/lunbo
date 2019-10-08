@@ -1,0 +1,71 @@
+
+MySQL SQL:
+SQL : structural query language 结构化查询语言
+SQL 分类：
+	1）DML ： date mainipulation language 数据操作语言
+		包含：insert : 添加数据到数据库中；
+			  update : 修改数据库中的数据；
+			  delete : 删除数据库中的数据；
+			  select : (DQL)选择（查询）数据；
+	    
+	2）DDL : 数据定义语言
+		包含：create table : 创建一张数据库表；
+			  alter table : 更改表结构、添加、删除、修改列长度；
+			  drop table : 删除表；
+			  create index : 在表中建立索引；
+			  
+	3）DCL : 数据控制语言：
+		包含：commit : 提交事务处理
+		      rollback : 回滚；
+	
+			账户A -1000 --1000->  账户B;
+		
+二、DML 学习：
+2.1 select 语句：
+	基础select语句语法：
+	select 字段。。。 from 表名；
+		select关键词：标识选择那些列
+		from关键词：标识从哪张表中进行选择；
+
+	SQL语法规范;
+	(1)sql语句中，大小写不敏感；
+	(2)sql语句可以写在一行或者多行，以分号作为一条语句的结束；
+	(3)在书写sql语句时，一般也要遵循缩进格式，提高可读性；
+	(4)sql关键字最好大写，以和其它语句作区分，关键字另起一行；
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

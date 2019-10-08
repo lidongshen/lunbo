@@ -1,0 +1,627 @@
+赵士琛（chen）
+
+即时通讯项目驱动（局域网qq）
+
+需求分析
+	注册
+	登录
+	搜索好友
+	加好友
+	私聊
+	群聊
+	传文件
+	。。。
+
+涉及到的知识点
+
+	所有的基础知识（任何编程语言基本一样）
+		数据类型和变量
+		运算符
+		表达式
+		流程控制
+			顺序
+			分支
+				if else if
+				switch case
+			循环
+				while
+				do while
+				for
+				foreach
+		数组
+		函数
+		
+	如果是面向对象的语言
+		类
+		对象
+		this super
+		
+		
+		封装
+			访问控制修饰符 private default protected public
+		继承
+			extends
+		
+		多态
+			定义接口不定义实现 定义抽象不定义具体
+			
+		抽象 4大特征多一个抽象
+			abstract | final
+				
+		
+		接口 是彻底的抽象类
+	
+
+	专题API
+		集合
+		文件IO
+		GUI
+		网络编程
+		多线程
+		反射
+		正则
+		。。。。
+		
+
+数据库
+	是专门存储数据的软件，商业数据都是存在数据库的
+	如果是关系型数据库，类似于excel的展示 二维展示 行和列
+	
+GUI
+	graphy user interface 图形用户界面 对比的 命令行黑窗口的
+	
+	
+
+正式开发项目
+
+	先按照项目的流程做一个界面原型，先写界面，然后再说功能 这样可以给客户看到项目的
+	效果，包括一些交互，比如按钮点击，还是指纹输入。。。
+	
+	
+	做界面还有一点原型，简单点，直观效果
+	
+	
+	
+	1 做界面
+		
+		项目其实分为2端，服务器端和客户端 大部分界面应该是在客户端
+		
+		先建立工程 ChatClient 和 ChatServer
+		
+		需要注意的是package 工程下边package如何划分
+		
+		
+		com.uek.view		界面层
+		com.uek.service		业务逻辑层
+		com.uek.dao			数据访问层
+		com.uek.domain		数据层		
+		
+		com.uek.exception	自定义异常
+		com.uek.utils		工具类 其中可以有多个工具
+		com.uek.test		单元测试类
+		
+		
+		首先明确界面编程属于GUI 图形用户界面编程
+		
+		
+				
+			
+		1.1 登录界面
+				
+			
+				
+		1.2 注册页面
+		
+		
+		
+		1.3 主界面
+				
+
+	
+	通过网络编程和多线程IO实际已经建立好了框架了,接下来开发一个一个
+	的功能
+	
+	
+	注册功能
+		
+		协议
+			 客户端发送 : 1,zs,111,i am zs,1.jpg
+			
+			 服务器回复 :
+							1,ok
+							1,nook
+							
+		1 开发注册页面
+			gui的API
+			
+		2 在点击注册按钮的时候和服务器发送1,zs,111,i am zs,1.jpg
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("1".equals(strs[0]))
+			{
+				//3.1 首先从strs中解析出来数据
+				Sring name = strs[1];
+				....
+				
+				//3.2 连接数据库对应的操作
+				
+				
+				//3.3 根据数据操作的结果去准备返回给客户端的信息
+				//比如1,ok
+				
+				//3.4 发送给对应的客户端
+				
+			
+			}
+		
+		4 客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("1".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+				Sring flag = strs[1];
+				....
+			
+				//4.2 更新自己的客户端 ，
+					比如
+						1 关闭一个界面，再打开一个界面
+						2 比如弹出提示框
+						3 在当前界面更新某个区域，比如列表
+						
+			}
+			
+		
+	登录功能
+		
+		协议
+			 客户端发送 : 2,zs,111
+			
+			 服务器回复 :
+							2,ok,1,zs,iamzs,1.jpg;2,ls,iamls,1.jpg;3,ww,iamww,1.jpg
+							2,nook,name is not exist | password is not incorrect;
+		
+		1 开发登录页面
+			gui的API
+			
+		2 在点击登录按钮的时候和服务器发送 2,zs,111
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("2".equals(strs[0]))
+			{
+				//3.1 首先从strs中解析出来数据
+				Sring name = strs[1];
+				String password = strs[2];
+				
+				//3.2 连接数据库对应的操作
+				
+				
+				//3.3 根据数据操作的结果去准备返回给客户端的信息
+				//比如2,nook
+				//2,ok,zs,111,iamzs,1.jpg;ls,111,iamls,1.jpg;ww,111,iamww,1.jpg
+				
+				//3.4 发送给对应的客户端
+				
+			
+			}
+		
+		4 客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("2".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+				Sring flag = strs[1];
+				....
+			
+				//4.2 更新自己的客户端 
+					
+					1 找到登录界面 直接销毁掉
+					
+					2 new MainView()
+						
+			}
+			
+			
+	
+	搜索好友
+		
+		协议
+			 客户端发送 : 3,serchkey
+			
+			 服务器回复 :
+							至少找到一个
+							3,ok,1,zs,iamzs,1.jpg;2,ls,iamls,1.jpg;ww,111,iamww,1.jpg
+							
+							一个都没有找到
+							3,nook
+							
+							
+		1 开发搜索页面
+			gui的API
+			
+			1.1 extends JFrame
+			1.2 定义实例变量 
+				成员 组件 
+				JLabel
+				JTextField
+				。。。
+				JPanel
+				
+				
+				
+			1.3 init
+					
+					1.3.1 new所有的实例成员组件
+					1.3.2 给this设置属性
+							size
+							title
+							。。。
+							visiable
+							
+							
+							
+							
+		2 在点击搜索按钮的时候和服务器发送 3,serchkey
+		
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("3".equals(strs[0]))
+			{
+				//3.1 首先从strs中解析出来数据
+				Sring serchkey = strs[1];
+				....
+				
+				//3.2 连接数据库对应的操作
+					
+					select *from t_user where name like '%serchkey%';
+					
+				
+				//3.3 根据数据操作的结果去准备返回给客户端的信息
+				//比如3,ok,zs,111,iamzs,1.jpg;ls,111,iamls,1.jpg
+				
+				//3.4 发送给对应的客户端
+					
+					PrintStream
+			
+			}
+		
+		4 客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("3".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+				Sring flag = strs[1];
+				....
+					if("ok".equals(flag))
+					{
+						
+						String usersStr = line.subString(5);
+						
+						String[] users = usersStr.split(";");
+						
+						
+						
+					}
+			
+				//4.2 更新自己的客户端 ，
+					比如
+						1 找到FrameUtils中的搜索界面
+						2 更新搜索界面的table
+						
+			}
+			
+	
+	加好友
+		
+		协议
+			 zs客户端发送 : 4,zs,ls
+							4,1,2
+						  
+			 服务器转给ls ：
+			 
+						 4,1,2
+						 
+						 
+			 ls给服务器回复 :
+						
+						同意zs加好友请求
+						 4,1,2,ok
+						 
+						拒绝
+						 4,1,2,nook
+						 
+			 
+			 服务器回复给zs
+			 
+					把ls回复zs的 4,1,2 （加好友的请求的回复） 
+					
+					4,1,2,ok
+						 
+					4,1,2,nook
+						 
+		
+		1 开发页面
+			
+			不需要，就是在搜索好友的界面，选中某个用户，用按钮提交
+			
+	
+		2 在点击加好友按钮的时候和服务器发送 4,1,2
+		
+			匿名内部类
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("4".equals(strs[0]))//4,1,2
+			{
+				//转发给对应的客户端ls
+					
+					PrintStream
+			
+			}
+		
+		5 ls客户端接收服务器转发的zs的加好友请求4,1,2
+		
+			if("4".equals(strs[0]))
+			{
+				if(strs.length == 3)//就证明有陌生人要加好友的请求
+				{
+					//4.1 首先从strs中解析出来数据
+					Sring fromId = strs[1];
+					
+					//4.2 更新自己的客户端 ，
+						弹出一个确认弹出框显示：zs要加您为好友，同意吗？
+						
+					//4.3 选择是否同意,拼接给服务器的回复
+							，并且更新自己好友界面
+					
+						同意
+							4,1,2,ok
+							
+							
+						不同意
+							4,1,2,nook
+							
+					//4.4 回复给服务器
+				}
+				
+			}
+			
+		
+		6 服务器接收到ls对于zs加好友的请求的回复4,1,2,ok|nook
+			
+			
+			if("4".equals(strs[0]))//4,1,2,ok|nook
+			{
+				//1 操作数据库 其实就是在t_friend表插入2条记录
+				1,2
+				2,1
+				
+				//转发给对应的客户端ls
+				PrintStream
+			
+			}
+			
+		7 zs客户端收到服务器给的ls关于自己要加他为好友的回复
+		
+		
+			if("4".equals(strs[0]))//4,1,2,ok|nook
+			{
+				//收到自己要加对方好友的回复
+				if(strs.length == 4)
+				{
+					更新自己的好友列表
+				}
+				
+				
+			
+			}
+		
+			
+	
+	私聊
+		
+		协议
+			 客户端发送 : 5,1,2,hello ls
+			
+			 服务器只给2回复 :
+			 
+						  5,1,2,hello ls
+							
+		
+		1 开发聊天页面
+			gui的API
+			
+							
+							
+							
+		2 在点击发送按钮的时候和服务器发送 5,1,2,hello ls
+		
+			匿名内部类里边的run方法实现发送
+			
+		3 服务器端接收客户端的信息，服务器端在多线程的run方法中写处理客户端注册请求的代码
+		
+			if("5".equals(strs[0]))
+			{
+				
+				//3.1 找到2 也就是ls的socket
+				
+				//3.2 把消息完完全全转发给ls 的 socket
+					
+					PrintStream
+			
+			}
+		
+		4 ls客户端接收服务器的响应信息，多线程类中加一个if
+		
+			if("5".equals(strs[0]))
+			{
+				
+				//4.1 首先从strs中解析出来数据
+					String from = strs[1];
+					String content = strs[3];
+					
+				//4.2 更新自己的客户端 ，
+					比如
+						1 找到FrameUtils中的和zs的聊天界面
+						2 更新界面的聊天内容显示框
+						
+			}
+		
+		
+			
+	新建立群
+		
+		协议
+			 客户端发送 : 6,创建人id,什么时间,群名字,群描述,群logo
+			
+			 服务器回复 :
+							6,ok
+							6,nook	
+		
+	
+	搜群
+		
+		协议
+			 客户端发送 : 7,crowdKeyword
+						
+						
+			 服务器回复 :
+						  7,ok,id,name,createrName,logo;id,name,,createrName,logo;
+						  
+						  7,nook	
+							
+	
+	
+	加入群
+		
+		协议
+			 客户端发送 : 8,userId,crowdId
+						
+						  
+			 服务器回复 :
+						  8,ok
+						  8,nook	
+							
+	获取我加入的所有群
+		
+		协议
+			 客户端发送 : 9,userId
+						
+						  
+			 服务器回复 :
+						  9,ok,1,q1,ql,c1;2,q2,ql,c2;
+						  9,nook		
+	
+	
+							
+	获取某个群的所有群成员
+		
+		协议
+			 客户端发送 : 10,crowdId
+						
+						  
+			 服务器回复 :
+						  10,ok,crowdId,1,q1,qm,gsl.png;2,q1,qm,gsl.png;
+						  10,nook		
+						  
+	
+	群聊
+	
+		协议
+			 客户端发送 : 11,selfId,crowdId,chatContent
+			
+			 服务器给所有群中在线的群成员回复 :
+						  
+						  11,selfId,crowdId,chatContent
+							
+							
+							
+							
+	传输文件
+	
+
+
+今天重构refactor一下项目
+
+	refactor有2大方向
+		分层分模块
+		消除冗余	：	编程中有个著名的话 一段代码重复出现3次以上 考虑封装 调用
+
+	项目实际已经实现了大部分功能？现在考虑一个问题？一个项目都写在一个class中
+	可以吗？理论上可以的。但是实际不行。职责不清，不好维护。代码耦合度太高。
+	好的代码高内聚，低耦合。
+	
+	
+	一个项目的代码可能10万行，肯定不能写到一个类class？到底写多少个类？每个
+	类又应该完成什么功能呢?
+	
+	
+	经过多年的业界实践，有最佳实践的，也是类似于模板。
+	
+	
+	com.uek.model|domain		数据层 data
+		数据库中有一张表这里一个class
+		User Friend Crowd CrowdMember
+		
+	com.uek.dao					数据访问层 data access object
+		inter
+			IUserDao IFriendDao ICrowdDao ICrowdMemebrDao
+		impl
+			UserDaoImpl	FriendDaoImp CrowdDaoImpl	CrowdMemberDaoImpl
+			
+	com.uek.service				业务逻辑层
+		inter
+			IUserService IFriendService ICrowdService ICrowdMemebrService
+		impl
+			UserServiceImpl	FriendServiceImp CrowdServiceImpl	CrowdMemberServiceImpl
+	com.uek.view				界面层
+		
+		UserView	FriendView CrowdView	CrowdMemberView
+		
+	com.uek.test				小的测试
+	com.uek.junit				单元测试
+		
+		UserDaoImplTest	FriendDaoImpTest CrowdDaoImplTest	CrowdMemberDaoImplTest
+		
+	com.uek.utils				工具类 
+		DButil
+		StringUtil
+		MessageUtil
+		FrameUtils
+		...
+		
+	com.uek.exception			自定义异常
+		
+		ChatException
+	
+	....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+		

@@ -1,0 +1,30 @@
+实现
+	1 启动服务器
+		端口号不要太小 1024可能被系统已经占用了
+		ServerSocket ss = new ServerSocket(1024);
+		
+		//socket 套接字 不好 插座
+		Socekt socket = ss.accept();
+		
+	2 客户端连接服务器
+		
+		Socket s = new Socekt("ip" , port);
+		
+	3 客户端给服务器发送一个hello字符串
+		
+		PrintStream ps = new PrintStream(s.getOutputStream());
+		ps.println("i am zs");//ln是换行
+		ps.flush();
+		
+	4 服务器接收到hello打印到自己的控制台
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+		
+		String line = null;
+		
+		while( (line = br.readLine()) != null )
+		{
+			System.out.println(line);
+		}
+		
+	

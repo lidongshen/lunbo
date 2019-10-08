@@ -1,0 +1,23 @@
+设置客户端用户名：git config --global user.name "ganjin"
+设置客户端邮箱：git config --global user.email "ganjin@qq.com"
+初始化：git init
+查看初始状态：git status
+暂存：git add 文件名（单个提交）
+          git add .(全部提交)
+提交：git commit -m "注释"
+查看修改的地方：git diff
+回到第一个版本：git reset --hard HEAD^
+回到某个版本：git reset --hard 版本号
+查看有几个版本：git log
+删除文件：rm -rf 文件名
+查看分支：git branch
+创建分支：git branch 分支名字
+切换分支：git checkout 分支名字
+合并内容到主分支下合并：git merge news
+创建并选择：git branch -b 分支名字
+删除分支：git branch -d 分支名字
+
+服务器：
+发送到服务器：git remote add origin https://github.com/lidongshen/ubdf1907.git
+	       git push -u origin master
+下载：git clone 地址

@@ -1,0 +1,42 @@
+
+JDBC API：
+驱动管理：DriverManager类 通过该类可以获取到程序与数据库的连接。		管理一组 JDBC 驱动程序的基本服务。
+连接接口：Connection接口 通过连接接口的对象，可以实现对数据库的增删改查操作，并且获取到结果。 |  与特定数据库的连接（会话）。在连接上下文中执行 SQL 语句并返回结果。			
+发送指令：Statement：可以通过该接口对象，程序向数据库发送操作指令。
+结果集：ResultSet接口 ，sql执行的结果会封装到一个结果集对象的集合当中。
+
+0.声明MySQL数据库驱动信息。
+	driver="com.mysql.jdbc.Driver";
+	url="jdbc:mysql://localhost:3306/test"  test->数据库名
+	username
+	password
+
+1.准备操作的数据库的驱动jar包：Mysql  build path导入
+2.加载数据库的驱动：Class.forName(driver);
+
+3.创建数据库连接 Connection conn = DriverManager.getConnection(url,username,password);
+4.确定操作，编写sql语句  sql="     ";
+5.获取发送指令器的对象，然后执行sql操作：Statement stmt = conn.createStatement();
+		ResultSet res = stmt.executeQuery(sql);
+6.处理结果集：
+	数据库的下标从1开始
+	1)使用数据类型获取一行中的各个属性值。
+	while(res.next()){
+		int id = res.getInt(1);
+		string str = res.getString(2);
+		Double d = res.getDouble(3);
+		Date date = res.getDate(4);
+	}
+7.释放资源。后开先关。
+	res.close();
+	stmt.close();
+	conn.close();
+
+项目配置文件：将项目中，经常就是用到的变量或常量抽取出来，
+				单独存放到一个文件中，然后程序中当引用变量或者常量时，直接读取该配置文件即可。
+	
+	类 Properties 
+	使用步骤：  1）在项目的src下，创建一个后缀为.properties文件，改格式。
+				2）属性名作为key，值为values。 等号两边不能用空格。 例子：USERNAME="root"
+				3）创建properties对象，使用方法：load（new fileinputStream("相对路径")）;
+				4）根据属性名获取属性值： .getProperty(key);

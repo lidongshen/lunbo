@@ -1,0 +1,165 @@
+多态：让程序更加灵活，具有扩展性。可以平滑将子类转化成父类的其他子类。
+注意：在编写一个类的模板时，一般要重写toString()  equals()  hashCode()
+
+集合的引用：
+
+	数组的数据类型。
+		1.基本数据类型数组
+			
+		2.引用数据类型数组
+			String[] str = new String[2];
+			str[0] = "1";
+			
+			自定义引用类型数组的创建（内存图）
+				1)构建自定义类的模板
+				2）创建自定义引用类型的数组：Person[] p = new Person[3];
+				3)赋值元素时，元素为自定义类型的对象。动态：p[0] = new Person(""，""); 
+					静态：Person[] p = new Person[]{new Person(""，""),new Person(""，"")}
+	
+集合：util包
+
+	***4种遍历****
+
+	1）长度可以扩容 2）数据类型：1.有泛型  2.没有泛型
+	在没有指定泛型情况下，集合中存储元素时，都以Object对待。
+	在集合存储元素时，如果元素的类型是基本数据类型，那么会自动装箱。
+	在集合中，存储的元素都是引用类型。
+	
+	Collection:  一列元素存在容器中    栈特点：先进后出。 
+			Collection c = new ArrayList();	（多态）	Collection父接口 --> List接口 -->ArrayList 
+				添加：    add();
+				添加集合：addAll();
+				删除指定元素：remove();
+				删除指定的集合：removeAll();
+				查找指定元素：contsins();
+				获取当前集合的容量、长度：size();
+				判断是否为空：isEmpty();
+				清空集合元素：clear();
+							get() Object
+				
+				添加自定义类：add(new Person("",""));
+				删除对象：当集合在删除对象时，会比较集合中存储的元素和指定删除的元素是否相等。默认比较的是两个元素的地址。
+							这时要比较内容，用重写的equals方法。
+				
+				迭代器：iterator();获取迭代器对象。 iterator.next()  iterator.hasNext():判断游标位置，还有没有下一个元素存在。
+	
+			List:可重复，有序		  
+					ArrayList:   （有序，可重复）类似数组但可变，底层维护可变长数组
+								（线程不安全效率高  jdk1.2之后推出ArrayList替代Vector ）		
+						List list =  new ArrayList();
+						增：list.add();
+							向滚动列表中索引指示的位置添加指定的项。 add(String item,int index)  当插入一个没有任何元素的集合时，
+							指定下标>0为添加会报错
+						删：.remove();  可以删下标位元素，可以删指定元素（基本元素包装类）。.remoe(new Integer(100));
+						改：.set(下标，值);  
+						查：4种遍历
+							返回下标：indexOf(值);
+						
+						
+					LinkedList:（连接池用）  （增删改效率高）底层维护的是双向链表结构。存储一个元素时，前面和后面存的是null
+						List list = new LinkedList();   
+						增：add
+							addFirst()  首节点添加（类特有）
+							addLast()	尾节点添加
+							* push()  指定元素插入首节点位置
+						删：removeFirst()   removeLast()  
+							* poll()  删除并返回第一个节点元素
+							
+						改：
+						查：getFirst()  getLast()
+							
+					Vector:（jdk1.5之前，线程安全效率低  jdk1.2之后推出ArrayList替代Vector ）
+					
+			Set:不可重复，无序
+				HashSet:	（线程不安全；对应着HashTable是线程安全的）
+					添加元素：通过hashCode计算 找到指定的 底层内存地址	
+					
+					哈希表：数组（没有重复值时） + 链表（扩展） + 红黑树（二叉树的变种）(扩展)  jdk1.8之前 没有红黑树
+					
+					hashCode :返回一个数（对象在内存中的存储地址）；
+					按照索引查找元素的速度慢，按照hashcode值查找元素速度快 。
+					当向 HashSet 集合中存入一个元素时，HashSet 会调用该对象的 hashCode() 方法来得到该对象的 hashCode 值，
+					然后根据 hashCode 值决定该对象在 HashSet 中的存储位置。
+					HashSet 集合判断两个元素相等的标准：两个对象通过 hashCode() 方法比较相等，并且两个对象的 equals() 方法返回值也相等。
+
+					重写hashcode的方法：将所有属性的hash值，进行累加
+					创建：Set set = new HashSet();
+					添加：set.add ("");
+					
+					/**
+					 * hashCode方法：返回hash值，代表的就是对象在内存中的位置
+					 *     默认情况下，所有在堆中的对象的地址都是唯一的；
+					 * 重写hashCode方法的思路：
+					 * 	将对象的所有属性的hash值进行累加，求出一个累加和；
+					 * 
+					 * 二次hash ： 就对object类实现的hashCode方法进行重写，求出一个新的hash值，
+					 * 			而该hash值，并不是对象在内存中存储的地址，仅仅是使用新的hash值，
+					 * 			来决定存储在哈希表中的哪一个位置；
+					 */
+					/**
+						*  1.当HashSet在存储元素时，首先调用该对象的hashCode方法，返回一个hash值，根据
+						 *  该hash值来决定存储在哈希表中的哪个位置；
+						 *  如果hashCode方法返回的hash值不同时，就调用equals方法继续比较了，hashSet直接把该元素直接添加到哈希表中
+						 *  如果hashCode方法返回的hash值相同时，那么再调用equals方法来进行判断
+						 *  2.当调用完hashcode方法后，还会调用equals方法，来判断集合中的元素和当前对象的属性值是否
+						 *    相同，如果相同，新元素就覆盖了旧元素，如果不同，就把新元素添加进去；
+						 *  补充：如果只重写hashCode方法，并没有重写equals方法，那么equals方法比较的是对象之间的地址；
+						 */
+						 
+						 
+				LinkedHashSet:   有序的  插入性能略低于hashset
+						在哈希表基础上添加双向链表结构,然后将所有的元素串联起来。当串联之后，每一个元素就有了顺序（索引）
+			
+				TreeSet:	
+					比较器的引入： （实现对象之间的 > < 比较）
+						1）内部比较器： 实现步骤：
+							（1）创建一个比较接口，在该接口中设计一个比较方法：public int compareTo（Object obj）
+							（2）让准备实现比较功能的类，实现比较接口，从而实现比较方法。
+							（3）在比较的过程中，使用冒泡排序来实现对所有对象的排序（升序、降序）
+							（4）不管是比较方法、排序方法，都应该使用多态的语法，从而避免方法重载冗余。
+						2）外部比较器：对象之间的比较（比较的内容是自定义的） 作为外部比较器，是将比较的方法独立封装到一个类中，
+							然后通过构建该方法进行比较。
+
+							实现步骤：1.构建比较方法的接口（该方法有两个接口）；
+								 2.构建具有比较功能的类。
+								 3.调用实现的类的成员方法
+									
+						特点：1）不允许重复，里面不能存储null对象（null对象无法排序）；
+							2）实现了对元素的排序：1>自然排序（默认，必须实现Comparable接口）；
+·									     2>自定义排序；
+							  注意：TreeSet要求所有的元素必须实现Compareable接口，否则会报类异常。 	
+								外部比较器用Comparator接口
+							  
+				
+				
+			Queue：					队列：先进先出。
+		
+	Map:	一个元素分两部分存在容器中    映射关系：  Key -> Value
+			key部分由Set维护 所以key不重复。 Value 部分由Collection结构维护 ，所以Value可重复。
+			//1.构建map集合：
+			Map map = new HashMap();
+			//2.添加元素：
+			map.put("null", 100);
+			//3.删除一个元素：
+		map.remove(10);
+			//4.根据key,获取对应的value:
+			Object obj = map.get("stu1");
+			//多态特点; 如果子类重写了父类的方法，父类调用方法时，调用的是子类重写过的方法：
+			System.out.println(obj); //
+			//5.判断map中，是否包含指定的key:
+			boolean flag = map.containsKey(null);
+			System.out.println(flag);
+			//6.判断map中，是否包含指定的value:
+			boolean flag1 = map.containsValue(null);
+			System.out.println(flag1);
+			//7.情况map集合：
+			map.clear();
+			//8.获取map的长度：
+			System.out.println(map.size());
+			//9.判断map是否为空：
+			boolean flag2 = map.isEmpty();
+			//10.以字符串的形式显示map中的元素：
+			System.out.println(map.toString());
+		HashMap
+		Hashtable
+		SottedMap
